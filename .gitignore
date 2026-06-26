@@ -1,51 +1,32 @@
 ```
-# Dependencies
+# Dependency directories
 vendor/
 node_modules/
 
-# Laravel specific
+# Laravel-specific
 bootstrap/cache/
-bootstrap/cache/*
 storage/logs/
 storage/framework/
-storage/framework/cache/
-storage/framework/sessions/
-storage/framework/views/
 public/storage/
 
-# Environment
+# Environment files
 .env
 .env.local
 .env.*
 
-# Compiled and build artifacts
-*.pyc
-__pycache__/
-*.o
-*.obj
-dist/
-build/
-target/
-
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-
-# Editors
+# IDE files
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# OS generated files
+# OS files
 .DS_Store
 Thumbs.db
 
-# Testing
-.coverage
-coverage/
-htmlcov/
-.phpunit.result.cache
+# Logs
+*.log
 
-# Composer
-composer.lock
+# Temporary files
+*.tmp
 ```
