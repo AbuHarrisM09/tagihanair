@@ -1,23 +1,22 @@
-<?php 
-	
-	$link = sha1('home_pe');
-	if (isset($_GET[sha1('home_pe')])) {
-		
-		header("location:home_pe.php?$link");
-    }
+<?php
+/**
+ * Encryption/Hashing Helper
+ * Provides SHA1 hashing for page identifiers (legacy support)
+ * Note: Consider using more secure authentication methods in production
+ */
 
-    elseif (isset($_GET[sha1('p_tagih_tampil')])) {
-		
-		header("location:pelanggan/tagih/tagih_tampil.php$link");
-    }
+// Define hashed page identifiers for customer portal
+define('HASH_HOME_PE', sha1('home_pe'));
+define('HASH_P_TAGIH_TAMPIL', sha1('p_tagih_tampil'));
+define('HASH_P_LUNAS_TAMPIL', sha1('p_lunas_tampil'));
+define('HASH_APK', sha1('apk'));
 
-    elseif (isset($_GET[sha1('p_lunas_tampil')])) {
-		
-		header("location:pelanggan/tagih/lunas_tampil.php$link");
-		}
-
-		elseif (isset($_GET[sha1('apk')])) {
-		
-		header("location:index.php$link");
-		}
- ?>
+/**
+ * Get hashed identifier for a page name
+ * @param string $page Page identifier
+ * @return string SHA1 hash of the page identifier
+ */
+function hashPage($page) {
+    return sha1($page);
+}
+?>
