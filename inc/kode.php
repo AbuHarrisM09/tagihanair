@@ -1,30 +1,32 @@
 <?php
+/**
+ * Auto-increment Code Generator
+ * Generates sequential codes for tb_pakai table
+ */
 
-  
-$carikode = mysqli_query($koneksi,"SELECT id_pakai FROM tb_pakai order by id_pakai desc");
-$datakode = mysqli_fetch_array($carikode);
-$kode = $datakode['id_pakai'];
-$urut = substr($kode, 1, 9);
-$tambah = (int) $urut + 1;
+/**
+ * Generate next auto-increment code for usage records
+ * @param mysqli $koneksi Database connection
+ * @return string Generated code in format K000000001
+ */
+function generateKodePakai($koneksi) {
+    $sql = "SELECT id_pakai FROM tb_pakai ORDER BY id_pakai DESC LIMIT 1";
+    $result = $koneksi->query($sql);
+    
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $kode = $row['id_pakai'];
+        $urut = (int)substr($kode, 1);
+    } else {
+        $urut = 0;
+    }
+    
+    $tambah = $urut + 1;
+    $format = "K" . str_pad($tambah, 9, "0", STR_PAD_LEFT);
+    
+    return $format;
+}
 
-if (strlen($tambah) == 1){
-$format = "K"."00000000".$tambah;
- }else if (strlen($tambah) == 2){
- $format = "K"."0000000".$tambah;
-     }else if (strlen($tambah) == 3){
-     $format = "K"."000000".$tambah;
-         }else if (strlen($tambah) == 4){
-         $format = "K"."00000".$tambah;
-             }else if (strlen($tambah) == 5){
-             $format = "K"."0000".$tambah;
-                 }else if (strlen($tambah) == 6){
-                 $format = "K"."000".$tambah;
-                     }else if (strlen($tambah) == 7){
-                     $format = "K"."00".$tambah;
-                         }else if (strlen($tambah) == 8){
-                         $format = "K"."0".$tambah;
-                             }else (strlen($tambah) == 9)[
-                             $format = "K".$tambah
-                                 ]
-                        
+// For backward compatibility
+$format = generateKodePakai($koneksi);
 ?>
