@@ -1,5 +1,5 @@
 {
-    "name": "laravel-air",
+    "name": "myapp/laravel-air",
     "type": "project",
     "description": "Sistem Tagihan Air Minum",
     "keywords": ["laravel", "framework", "water billing"],
